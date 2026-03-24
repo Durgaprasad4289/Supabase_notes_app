@@ -41,12 +41,22 @@ export default function Auth() {
 
   // OAUTH
   const loginWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "google" });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "https://supabase-notes-app-plum.vercel.app"
+      }
+    });
     if (error) toast.error(error.message);
   };
 
   const loginWithGitHub = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "github" });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: "https://supabase-notes-app-plum.vercel.app"
+      }
+    });
     if (error) toast.error(error.message);
   };
 
